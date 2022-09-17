@@ -1,24 +1,24 @@
-.navbar{
-    background-color: #f6f4f1;
-    display: flex;
-    flex-wrap: nowrap;
-    height:9vh;
-    align-items: center;
-    justify-content: center;
-    padding:10px
+.navbar {
+  background-color: #f6f4f1;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 9vh;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
-.nav-brand{
-    margin-right: auto;
-    font-size:30px;
+.nav-brand {
+  margin-right: auto;
+  font-size: 30px;
 }
 
-.logo{
-    transform:scale(0.2);
+.logo {
+  transform: scale(0.2);
 }
 
-.sign-in{
-    margin-left: auto;
-    height:30px;
-    padding:5px;
+.logout {
+  margin-left: auto;
+  height: 30px;
+  padding: 5px;
 }

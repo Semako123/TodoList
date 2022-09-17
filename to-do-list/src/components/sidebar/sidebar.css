@@ -1,0 +1,23 @@
+.sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #3b4b505f;
+  width: 30vw;
+  font-size: 70px;
+}
+
+.circle{
+    width: 10px;
+    height:10px;
+    border-radius: 10px;
+    background-color: rgb(21, 20, 20);
+}
+
+.top{
+ transform: translate(10px, -8px);
+}
+
+.bottom{
+ transform: translate(0px, 15px);
+}

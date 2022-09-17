@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className='navbar'>
           <h1 className='nav-brand'>Todo List</h1>
           <img src={logo} alt="Logo of oases" className='logo'/>
-          <button className='sign-in'>Sign Up</button>
+          <button className='logout'>Logout</button>
     </div>
   )
 }

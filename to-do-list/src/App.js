@@ -1,13 +1,13 @@
 import Footer from './components/footer/footer';
 import Navbar from './components/navbar/navbar';
-import Notes from './components/notes/notes';
+import Body from './components/body/body';
 import './App.css';
 
 function App() {
   return (
     <div className='app'>
       <Navbar />
-      <Notes />
+      <Body />
       <Footer /> 
     </div>
   );

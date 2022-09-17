@@ -1,0 +1,33 @@
+.task {
+  padding: 3px;
+  background: #3b4b503c;
+  backdrop-filter: blur(16.1px);
+  border: 1px solid rgba(255, 255, 255, 0.387);
+}
+
+.actions{
+  margin-left: auto;
+}
+
+.action-button{
+    margin: 1px;
+    transform: scale(0.8);
+}
+
+.a-svg{
+  color: #3b4b50da;
+    text-align: center;
+}
+
+.title{
+  transform: translateY(4px);
+}
+
+.test{
+  display: none;
+}
+
+.visible{
+  display: block;
+  transition: all 500ms ease-in-out;
+}
