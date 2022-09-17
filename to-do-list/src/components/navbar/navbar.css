@@ -2,7 +2,7 @@
     background-color: #f6f4f1;
     display: flex;
     flex-wrap: nowrap;
-    height:80px;
+    height:9vh;
     align-items: center;
     justify-content: center;
     padding:10px
@@ -14,7 +14,7 @@
 }
 
 .logo{
-    transform:scale(0.25);
+    transform:scale(0.2);
 }
 
 .sign-in{

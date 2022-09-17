@@ -1,0 +1,28 @@
+.notes{
+    background-color: #3b4b500b;
+    border: solid #3b4b504a 0.1px ;
+    padding: 10px;
+    height:65vh;
+    width:60vw;
+    margin:5vh auto;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    margin-left: auto;
+    height: 30px;
+    width:30px;
+    margin-right: 20px;
+    align-self: center;
+}
+
+.svg{
+    transform: translateX(-2px);
+    color: #3b4b50;
+    text-align: center;
+    font-size: 10px;
+}
