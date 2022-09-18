@@ -1,39 +1,44 @@
 import React from "react";
 import "./task.css";
-import { EditTwoTone, DeleteForeverTwoTone } from "@mui/icons-material";
-import { useState } from "react";
+import {
+  EditTwoTone,
+  DeleteForeverTwoTone,
+  CheckCircleTwoTone,
+} from "@mui/icons-material";
+import { Tooltip } from "@mui/material";
 
 const Task = () => {
-  const test = () => {
-    const tmpState = [...taskClass];
-    tmpState.push("visble");
-    settaskClass(tmpState);
-  };
-  const [taskClass, settaskClass] = useState(["test"]);
   return (
-    <div className="task">
-      <div className="header" onMouseOver={test}>
-        <div className="title">Task Title</div>
-        <div className="actions">
-          <button className="action-button">
-            <EditTwoTone className="a-svg" />
-          </button>
-          <button className="action-button">
-            <DeleteForeverTwoTone className="a-svg" />
-          </button>
+    <>
+      <div className="task task-header">
+        <div className="head">
+          <div className="title">
+            Task Title
+            <div className="status">
+              <span className="status-color"></span>Available
+            </div>
+          </div>
+          <span className="deadline">Today, 12:30</span>
+          <div className="actions">
+            <Tooltip title="Mark done">
+              <button className="action-button">
+                <CheckCircleTwoTone className="a-svg" />
+              </button>
+            </Tooltip>
+            <Tooltip title="Edit Task">
+              <button className="action-button">
+                <EditTwoTone className="a-svg" />
+              </button>
+            </Tooltip>
+            <Tooltip title="Delete Task">
+              <button className="action-button">
+                <DeleteForeverTwoTone className="a-svg" />
+              </button>
+            </Tooltip>
+          </div>
         </div>
       </div>
-      <div className={taskClass.join(" ")}>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-      </div>
-    </div>
+    </>
   );
 };
 

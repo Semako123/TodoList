@@ -19,6 +19,12 @@
   width: 30px;
   margin-right: 20px;
   align-self: center;
+  transition: transform 250ms ease;
+}
+
+.button:hover{
+
+  transform: scale(1.1);
 }
 
 .svg {

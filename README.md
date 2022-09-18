@@ -19,4 +19,4 @@ TECHNOLOGIES USED
 
 Reactjs
 Python(Flask)
-Material UI(Icons)
+Material UI

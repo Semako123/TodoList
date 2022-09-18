@@ -10,7 +10,10 @@
 
 .nav-brand {
   margin-right: auto;
-  font-size: 30px;
+  font-size: 25px;
+  border: #3b4b501d solid 3px;
+  padding: 3px;
+  border-style: ridge;
 }
 
 .logo {
@@ -18,7 +21,12 @@
 }
 
 .logout {
+  transition: transform 250ms ease;
   margin-left: auto;
   height: 30px;
   padding: 5px;
+}
+
+.logout:hover{
+  transform: scale(1.1);
 }

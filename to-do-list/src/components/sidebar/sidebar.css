@@ -1,23 +1,49 @@
 .sidebar {
+  padding-top: 40px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: solid 1px #3b4b505f;
+  border: solid #3b4b506b;
+  border-style: inset;
   width: 30vw;
-  font-size: 70px;
+  font-size: 40px;
 }
 
-.circle{
-    width: 10px;
-    height:10px;
-    border-radius: 10px;
-    background-color: rgb(21, 20, 20);
+.greeting {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.top{
- transform: translate(10px, -8px);
+.upcoming {
+  margin-top: 30px;
+  font-size: 20px;
 }
 
-.bottom{
- transform: translate(0px, 15px);
+.blink {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 900;
+  transform: translateY(-3px);
+  margin: 0px 2px;
+}
+
+table {
+  font-size: 15px;
+  margin-top: 20px;
+  border-collapse:collapse;
+  width:90%;
+  transition: transform 250ms ease-out;
+}
+
+table:hover{
+  transform:scale(1.05)
+}
+
+table, th, td{
+  border-bottom: solid #3b4b505f 1px;
+}
+
+td, th{
+  text-align: center;
 }
