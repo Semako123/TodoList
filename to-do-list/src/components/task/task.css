@@ -21,7 +21,7 @@
 
 .task-header {
   border-bottom: solid #3b4b50da 1px;
-  transition: transform 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .task-header:hover{
@@ -38,12 +38,6 @@
   font-weight: 900;
 }
 
-.test {
-  transition: all 500ms ease-in-out;
-  transform: translateY(-10000px);
-  opacity: 0;
-  overflow: hidden;
-}
 
 .status {
   font-size: 10px;

@@ -28,7 +28,7 @@
   margin: 0px 2px;
 }
 
-table {
+.table {
   font-size: 15px;
   margin-top: 20px;
   border-collapse:collapse;
@@ -36,14 +36,14 @@ table {
   transition: transform 250ms ease-out;
 }
 
-table:hover{
+.table:hover{
   transform:scale(1.05)
 }
 
-table, th, td{
+.table, .th, .td{
   border-bottom: solid #3b4b505f 1px;
 }
 
-td, th{
+.td, .th{
   text-align: center;
 }

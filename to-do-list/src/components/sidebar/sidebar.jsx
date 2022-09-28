@@ -7,11 +7,10 @@ const Sidebar = () => {
   const [minutes, setminutes] = useState(0);
   let date = new Date();
   useEffect(() => {
-    const blinkFunc = setInterval(() => {
-      sethours(date.getHours());
-      setminutes(date.getMinutes());
-    }, 500);
-    return () => clearInterval(blinkFunc);
+    let newMinutes = date.getMinutes();
+    let newHours = date.getHours();
+    sethours(newHours);
+    setminutes(newMinutes);
   }, []);
   return (
     <div className="sidebar">
@@ -19,22 +18,22 @@ const Sidebar = () => {
       <div>
         {hours}
         <span className="blink">:</span>
-        {minutes < 10? "0" +  minutes  : minutes} 
+        {minutes < 10 ? "0" + minutes : minutes}
       </div>
       <div className="upcoming">Upcoming tasks</div>
-      <table>
+      <table className="table">
         <thead>
-          <tr>
-            <th>TITLE</th>
-            <th>STATUS</th>
-            <th>DEADLINE</th>
+          <tr className="tr">
+            <th className="th">TITLE</th>
+            <th className="th">STATUS</th>
+            <th className="th">DEADLINE</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Test title</td>
-            <td>Active</td>
-            <td>12:30</td>
+          <tr className="tr">
+            <td className="td">Test title</td>
+            <td className="td">Active</td>
+            <td className="td">12:30</td>
           </tr>
         </tbody>
       </table>
