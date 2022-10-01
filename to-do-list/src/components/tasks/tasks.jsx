@@ -3,12 +3,14 @@ import "./tasks.css";
 import { Add } from "@mui/icons-material";
 import Task from "../task/task";
 import { Tooltip } from "@mui/material";
-import { useState } from "react";
-// import axios from "axios";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Notes = () => {
   const [task, settask] = useState("");
+  const [tasks, settasks] = useState({});
   const [deadline, setdeadline] = useState("");
+  const API = axios.create({ baseURL: "http://127.0.0.1:5000/" });
 
   const handleTaskChange = (e) => {
     const new_task = e.target.value;
@@ -21,22 +23,41 @@ const Notes = () => {
   };
   const handleCancelTaskInput = () => {
     const form = document.querySelector(".form-visible");
+    const task = document.querySelector(".task-bar");
     form.className = "form";
+    task.classList.remove("task-bar-move");
   };
   const handleShowTaskInput = () => {
     const form = document.querySelector(".form");
+    const task = document.querySelector(".task-bar");
     form.className = "form-visible";
+    task.classList.add("task-bar-move");
   };
-
-  // const API = axios.create({ baseURL: "http://127.0.0.1:5000/" });
 
   const handleSubmit = () => {
-    // API.post("/addnote", {'task':task, 'deadline':deadline}).then(res=> (console.log(res)));
-    const emptyString = ''
-    settask(emptyString)
-    setdeadline(emptyString)
-    handleCancelTaskInput();
+    if (task && deadline) {
+      API.post("/addnote", { task: task, deadline: deadline }).then((res) => {
+        console.log(res);
+        fetchTasks();
+      });
+      const emptyString = "";
+      settask(emptyString);
+      setdeadline(emptyString);
+      handleCancelTaskInput();
+    }
   };
+
+  const fetchTasks = () => {
+    API.get("/fetch-tasks").then((res) => {
+      const new_tasks = res.data;
+      settasks(new_tasks);
+    });
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
   return (
     <>
       <div className="tasks">
@@ -87,7 +108,13 @@ const Notes = () => {
             Cancel
           </button>
         </div>
-        <Task />
+        <div className="task-bar">
+          {tasks.data &&
+            tasks.data.map((task) => (
+              <Task title={task.title} deadline={task.deadline} key={task.id}/>
+            ))}
+          <Task />
+        </div>
       </div>
     </>
   );

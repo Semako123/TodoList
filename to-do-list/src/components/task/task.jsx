@@ -6,20 +6,19 @@ import {
   CheckCircleTwoTone,
 } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
-
-const Task = () => {
+const Task = ({title, deadline}) => {
   
   return (
     <>
       <div className="task task-header">
         <div className="head">
           <div className="title">
-            Task Title
+            {title}
             <div className="status">
               <span className="status-color"></span>Available
             </div>
           </div>
-          <span className="deadline">Today, 12:30</span>
+          <span className="deadline">{deadline}</span>
           <div className="actions">
             <Tooltip title="Mark done">
               <button className="action-button">
