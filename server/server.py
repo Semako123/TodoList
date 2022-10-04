@@ -1,3 +1,4 @@
+from crypt import methods
 from datetime import datetime
 from package import create_app
 from package import db, Task
@@ -13,7 +14,6 @@ app = create_app()
 def add_note():
     if request.method == "POST":
         new_entry = request.get_json()
-        print(new_entry)
         deadline = datetime.strptime(new_entry['deadline'], '%Y-%m-%dT%H:%M')
         new_task = Task(title=new_entry['task'], deadline=deadline)
         db.session.add(new_task)
@@ -23,13 +23,19 @@ def add_note():
 
 @app.route("/fetch-tasks")
 def fetchTasks():
-    tasks = Task.query.all()
+    tasks = Task.query.order_by(Task.deadline).all()
     tasks_obj = {'data':[]}
     for task in tasks:
         date = task.deadline.strftime('%c')
         tasks_obj["data"].append({'title':task.title, 'deadline':date, 'id':task.id})
-    print(tasks_obj)
     return tasks_obj; 
+
+@app.route("/delete", methods=['POST', 'GET'])
+def deleteTask():
+    data = request.get_json()
+    Task.query.filter_by(id=data["id"]).delete()
+    db.session.commit()
+    return "Task successfully deleted from database"
 
 if __name__ == "__main__":
     app.run(debug=True)

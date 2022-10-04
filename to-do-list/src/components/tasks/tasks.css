@@ -1,12 +1,12 @@
 .tasks {
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: #3b4b500b;
   border: solid #3b4b504a 0.1px;
   padding: 10px;
   height: 65vh;
   width: 50vw;
   margin: 5vh auto;
-  overflow: hidden;
   position: relative;
 }
 
@@ -94,12 +94,12 @@ tr {
 }
 
 .task-bar {
-  position: absolute;
+  position:absolute;
+  top:27%;
   width: 97%;
-  top:33%;
   transition: all 600ms ease-in-out;
 }
 
 .task-bar-move {
-  top: 48%;
+  top: 43%;
 }

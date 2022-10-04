@@ -5,6 +5,7 @@ import Task from "../task/task";
 import { Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { LinearProgress } from "@mui/material";
 
 const Notes = () => {
   const [task, settask] = useState("");
@@ -25,6 +26,9 @@ const Notes = () => {
     const form = document.querySelector(".form-visible");
     const task = document.querySelector(".task-bar");
     form.className = "form";
+    const emptyString = "";
+    settask(emptyString);
+    setdeadline("");
     task.classList.remove("task-bar-move");
   };
   const handleShowTaskInput = () => {
@@ -37,7 +41,6 @@ const Notes = () => {
   const handleSubmit = () => {
     if (task && deadline) {
       API.post("/addnote", { task: task, deadline: deadline }).then((res) => {
-        console.log(res);
         fetchTasks();
       });
       const emptyString = "";
@@ -45,6 +48,34 @@ const Notes = () => {
       setdeadline(emptyString);
       handleCancelTaskInput();
     }
+  };
+
+  const handleUpdate = () => {
+    const addBtn = document.querySelector(".add");
+    const doneBtn = document.querySelector(".done");
+    addBtn.style.display = "block";
+    doneBtn.style.display = "none";
+    console.log(task)
+    console.log(deadline)
+    API.post("/update", {});  
+    handleCancelTaskInput();
+  };
+
+  const handleEdit = (id, title, deadline) => {
+    const addBtn = document.querySelector(".add");
+    const doneBtn = document.querySelector(".done");
+    const dateTime = new Date(deadline);
+    const newDeadline = dateTime.toISOString().slice(0, 16);
+    console.log(newDeadline)
+    settask(title);
+    setdeadline(newDeadline);
+    addBtn.style.display = "none";
+    doneBtn.style.display = "block";
+    handleShowTaskInput();
+  };
+
+  const handleDelete = (id) => {
+    API.post("/delete", { id: id }).then((res) => fetchTasks());
   };
 
   const fetchTasks = () => {
@@ -101,19 +132,46 @@ const Notes = () => {
               </tr>
             </tbody>
           </table>
-          <button type="submit" className="b-done" onClick={handleSubmit}>
+          <button type="submit" className="b-done add" onClick={handleSubmit}>
             Add
+          </button>
+          <button
+            type="submit"
+            className="b-done done"
+            style={{ display: "none" }}
+            onClick={handleUpdate}
+          >
+            Done
           </button>
           <button className="b-done" onClick={handleCancelTaskInput}>
             Cancel
           </button>
         </div>
         <div className="task-bar">
-          {tasks.data &&
-            tasks.data.map((task) => (
-              <Task title={task.title} deadline={task.deadline} key={task.id}/>
-            ))}
-          <Task />
+          {tasks.data ? (
+            tasks.data.length === 0 ? (
+              "No tasks added yet. Click on the '+' button to add a new task "
+            ) : (
+              tasks.data.map((task) => (
+                <Task
+                  title={task.title}
+                  deadline={task.deadline}
+                  key={task.id}
+                  id={task.id}
+                  handleDelete={() => {
+                    handleDelete(task.id);
+                  }}
+                  handleEdit={() => {
+                    handleEdit(task.id, task.title, task.deadline);
+                  }}
+                />
+              ))
+            )
+          ) : (
+            <div style={{ width: "100%" }}>
+              <LinearProgress />
+            </div>
+          )}
         </div>
       </div>
     </>
