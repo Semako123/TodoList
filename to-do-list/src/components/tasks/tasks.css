@@ -39,7 +39,7 @@
   font-size: 13px;
   border: solid #3b4b503c 1px;
   padding: 5px;
-  margin-bottom: 2px;
+  margin-bottom:2px;
   display: flex;
   flex-wrap: nowrap;
   transition: all 1000ms ease-in-out;
@@ -101,5 +101,5 @@ tr {
 }
 
 .task-bar-move {
-  top: 43%;
+  top: 46%;
 }

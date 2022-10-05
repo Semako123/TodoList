@@ -10,6 +10,7 @@ import { LinearProgress } from "@mui/material";
 const Notes = () => {
   const [task, settask] = useState("");
   const [tasks, settasks] = useState({});
+  const [id, setid] = useState(0);
   const [deadline, setdeadline] = useState("");
   const API = axios.create({ baseURL: "http://127.0.0.1:5000/" });
 
@@ -55,20 +56,28 @@ const Notes = () => {
     const doneBtn = document.querySelector(".done");
     addBtn.style.display = "block";
     doneBtn.style.display = "none";
-    console.log(task)
-    console.log(deadline)
-    API.post("/update", {});  
+    API.post("/update", { title: task, deadline: deadline, id: id }).then(
+      (res) => {
+        setid(0);
+        fetchTasks();
+      }
+    );
     handleCancelTaskInput();
   };
 
-  const handleEdit = (id, title, deadline) => {
+  const handleEdit = (taskId, title, deadline) => {
     const addBtn = document.querySelector(".add");
     const doneBtn = document.querySelector(".done");
     const dateTime = new Date(deadline);
-    const newDeadline = dateTime.toISOString().slice(0, 16);
-    console.log(newDeadline)
+    // 2022-10-05T01:30
+    const newDeadline = `${dateTime.getFullYear()}-${(
+      dateTime.getMonth() + 1
+    )}-${dateTime.getDate()})
+  }T${dateTime.getHours()}: ${dateTime.getMinutes()}`;
+    console.log(newDeadline);
     settask(title);
     setdeadline(newDeadline);
+    setid(taskId);
     addBtn.style.display = "none";
     doneBtn.style.display = "block";
     handleShowTaskInput();
