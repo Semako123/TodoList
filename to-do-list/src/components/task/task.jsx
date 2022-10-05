@@ -3,13 +3,14 @@ import "./task.css";
 import { EditTwoTone, DeleteForeverTwoTone } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import { Tooltip } from "@mui/material";
+import convertTens from '../utilities/convertTens'
 const Task = ({ id, title, deadline, handleDelete, handleEdit }) => {
   const dateTime = new Date(deadline);
   const currentDateTime = new Date();
   const [taskAv, settaskAv] = useState(true);
   useEffect(() => {
     dateTime > currentDateTime ? settaskAv(true) : settaskAv(false);
-  }, []);
+  }, [deadline]);
 
   return (
     <>
@@ -26,10 +27,19 @@ const Task = ({ id, title, deadline, handleDelete, handleEdit }) => {
               {taskAv ? "Active" : "Expired"}
             </div>
           </div>
-          <span className="deadline">{`${dateTime.getDate()}/${dateTime.getMonth()+1}/${dateTime.getFullYear()} | ${dateTime.getHours()}:${dateTime.getMinutes()}`}</span>
+          <span className="deadline">{`${dateTime.getDate()}/${
+            dateTime.getMonth() + 1
+          }/${dateTime.getFullYear()} | ${convertTens(
+            dateTime.getHours()
+          )}:${convertTens(dateTime.getMinutes())}`}</span>
           <div className="actions">
             <Tooltip title="Edit Task">
-              <button className="action-button" onClick={() => { handleEdit(id, title, deadline) }}>
+              <button
+                className="action-button"
+                onClick={() => {
+                  handleEdit(id, title, deadline);
+                }}
+              >
                 <EditTwoTone className="a-svg" />
               </button>
             </Tooltip>

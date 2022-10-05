@@ -5,6 +5,7 @@ import Task from "../task/task";
 import { Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import convertTens from "../utilities/convertTens";
 import { LinearProgress } from "@mui/material";
 
 const Notes = () => {
@@ -26,6 +27,10 @@ const Notes = () => {
   const handleCancelTaskInput = () => {
     const form = document.querySelector(".form-visible");
     const task = document.querySelector(".task-bar");
+    const addBtn = document.querySelector(".add");
+    const doneBtn = document.querySelector(".done");
+    addBtn.style.display = "block";
+    doneBtn.style.display = "none";
     form.className = "form";
     const emptyString = "";
     settask(emptyString);
@@ -52,10 +57,6 @@ const Notes = () => {
   };
 
   const handleUpdate = () => {
-    const addBtn = document.querySelector(".add");
-    const doneBtn = document.querySelector(".done");
-    addBtn.style.display = "block";
-    doneBtn.style.display = "none";
     API.post("/update", { title: task, deadline: deadline, id: id }).then(
       (res) => {
         setid(0);
@@ -69,12 +70,7 @@ const Notes = () => {
     const addBtn = document.querySelector(".add");
     const doneBtn = document.querySelector(".done");
     const dateTime = new Date(deadline);
-    // 2022-10-05T01:30
-    const newDeadline = `${dateTime.getFullYear()}-${(
-      dateTime.getMonth() + 1
-    )}-${dateTime.getDate()})
-  }T${dateTime.getHours()}: ${dateTime.getMinutes()}`;
-    console.log(newDeadline);
+    const newDeadline = `${dateTime.getFullYear()}-${convertTens(dateTime.getMonth()+1)}-${convertTens(dateTime.getDate())}T${convertTens(dateTime.getHours())}:${convertTens(dateTime.getMinutes())}`;
     settask(title);
     setdeadline(newDeadline);
     setid(taskId);
@@ -122,6 +118,7 @@ const Notes = () => {
               <tr>
                 <td>
                   <input
+                    autoComplete='off'
                     type="text"
                     name="task-title"
                     className="task-form-title"

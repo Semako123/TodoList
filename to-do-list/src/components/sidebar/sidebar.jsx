@@ -3,6 +3,7 @@ import "./sidebar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LinearProgress } from "@mui/material";
+import convertTens from "../utilities/convertTens";
 
 const Sidebar = () => {
   const [hours, sethours] = useState(0);
@@ -20,8 +21,13 @@ const Sidebar = () => {
       settasks(new_tasks);
     });
   };
-  // const getMinutes = () => { console.log(date.getMinutes()); return date.getMinutes(); }
-  // const getHours = () => date.getHours()
+
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     sethours(currentDateTime.getHours());
+  //     setminutes(currentDateTime.getMinutes())
+  //   }, 3000);
+  // })
 
   useEffect(() => {
     setInterval(() => {
@@ -58,7 +64,9 @@ const Sidebar = () => {
                   <tr className="tr" key={task.title}>
                     <td className="td">{task.title}</td>
                     <td className="td">{taskAv ? "Active" : "Expired"}</td>
-                    <td className="td">{`${deadlineDT.getHours()}:${deadlineDT.getMinutes()}`}</td>
+                    <td className="td">{`${convertTens(
+                      deadlineDT.getHours()
+                    )}:${convertTens(deadlineDT.getMinutes())}`}</td>
                   </tr>
                 );
               }
