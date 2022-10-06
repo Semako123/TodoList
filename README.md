@@ -1,8 +1,8 @@
-# TodoList
+## TodoList
 
 This is a basic todo list app built with react, flask(Python) and MySQL database
 
-FEATURES
+# FEATURES
 
 - Add notes
 - Delete notes
@@ -10,12 +10,12 @@ FEATURES
 - Sign up/ Login
 - Notes time-stamps
 
-DESIGN
+# DESIGN
 
 Font: Livvic
-Color pallette: #f6f4f1, #3b4b50, #320e13
+Color palette: #f6f4f1, #3b4b50, #320e13
 
-TECHNOLOGIES USED
+# TECHNOLOGIES USED
 
 Reactjs
 Python(Flask)

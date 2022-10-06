@@ -1,0 +1,41 @@
+.outerBox{
+    display: flex;
+    width: 75vw;
+    height: 85vh;
+    background-color: #79726a;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.divSection{
+    height: 85vh;
+    width: 37.5vw;
+}
+
+.imageSection{
+    height: 85vh;
+    width:40vw;
+}
+
+.loginSection{
+    background-color: #f6f4f1;
+    position: relative;
+}
+
+.background{
+    height: 100vh;
+    width:100vw;
+    background-color: #3b4b50;
+}
+
+.logo{
+    height: 100px;
+    width:100px;
+    position:absolute;
+    z-index: 2;
+    left:50%;
+    top:3%;
+    transform: translateX(-50%);
+}
