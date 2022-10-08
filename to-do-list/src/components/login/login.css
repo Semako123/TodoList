@@ -1,0 +1,122 @@
+.outerBox {
+  display: flex;
+  width: 75vw;
+  height: 85vh;
+  background-color: #79726a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  box-shadow: #3b4b50 6px 6px 20px;
+}
+
+.divSection {
+  height: 85vh;
+  width: 37.5vw;
+}
+
+.imageSection {
+  height: 85vh;
+  width: 40vw;
+  transform: translateY(-42.8vh);
+  transition: 500ms transform ease;
+}
+
+.loginSection {
+  height: 170vh;
+  background-color: #f6f4f1;
+  position: relative;
+  transition: 500ms transform ease;
+  transform: translateY(0vh);
+}
+
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e6e6e6;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  display: block;
+  z-index: 2;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.intro {
+  margin-top: 20px;
+  text-align: center;
+  font-size: larger;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: #403c38;
+  margin-top: -10px;
+}
+
+.textField {
+  margin: 10px auto !important;
+  width: 70%;
+}
+
+.passField {
+  margin: 10px auto !important;
+  width: 70%;
+}
+
+.loginBtn {
+  margin: auto;
+  border: none;
+  padding: 10px 30px;
+  background-color: #524e49;
+  color: #f6f4f1;
+  border-radius: 20px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: ease-in-out 200ms transform;
+  margin-top: 20px;
+}
+
+.loginBtn:hover {
+  transform: scale(1.1);
+}
+
+.bottomText {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.bottom {
+  margin-top: 20px;
+}
+
+.bottomLink {
+  cursor: pointer;
+  text-decoration: underline;
+  transform: scale(1);
+  transition: transform 200ms ease-in;
+  color: #00607d;
+  margin-bottom: 21vh;
+}
+
+.bottomLink:hover {
+  transform: scale(1.1);
+}
+
+.errorMessage {
+  width: 70%;
+  margin: auto;
+  margin-top: -10px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}

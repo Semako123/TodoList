@@ -16,11 +16,13 @@
 }
 
 .button {
+  display: flex;
   margin-left: auto;
   height: 30px;
   width: 30px;
   margin-right: 20px;
   align-self: center;
+  justify-content: center ;
   transition: transform 250ms ease;
 }
 
@@ -29,7 +31,6 @@
 }
 
 .svg {
-  transform: translateX(-2px);
   text-align: center;
   font-size: 10px;
   color: #3b4b50da;
