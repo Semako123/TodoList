@@ -22,12 +22,12 @@ const Sidebar = () => {
     });
   };
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     sethours(currentDateTime.getHours());
-  //     setminutes(currentDateTime.getMinutes())
-  //   }, 3000);
-  // })
+  useEffect(() => {
+    setInterval(() => {
+      sethours(currentDateTime.getHours());
+      setminutes(currentDateTime.getMinutes())
+    }, 3000);
+  })
 
   useEffect(() => {
     setInterval(() => {
@@ -36,7 +36,7 @@ const Sidebar = () => {
   }, []);
   return (
     <div className="sidebar">
-      <div className="greeting">Good Morning</div>
+      <div className="greeting">{hours < 16 ? (hours < 12 ? "Good Morning" : "Good Afternoon") : "Good Evening"}</div>
       <div>
         {hours}
         <span className="blink">:</span>
