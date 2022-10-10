@@ -3,14 +3,19 @@ import "./task.css";
 import { EditTwoTone, DeleteForeverTwoTone } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import { Tooltip } from "@mui/material";
-import convertTens from '../utilities/convertTens'
+import convertTens from "../utilities/convertTens";
 const Task = ({ id, title, deadline, handleDelete, handleEdit }) => {
   const dateTime = new Date(deadline);
-  const currentDateTime = new Date();
+  const [currentDateTime, setcurrentDateTime] = useState(new Date());
   const [taskAv, settaskAv] = useState(true);
   useEffect(() => {
+    setInterval(() => {
+      setcurrentDateTime(new Date());
+    }, 1000);
+  }, []);
+  useEffect(() => {
     dateTime > currentDateTime ? settaskAv(true) : settaskAv(false);
-  }, [deadline]);
+  }, [deadline, currentDateTime]);
 
   return (
     <>

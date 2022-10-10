@@ -6,10 +6,12 @@ import { LinearProgress } from "@mui/material";
 import convertTens from "../utilities/convertTens";
 
 const Sidebar = () => {
-  const [hours, sethours] = useState(0);
-  const [minutes, setminutes] = useState(0);
+  const [date, setdate] = useState(new Date());
   const [tasks, settasks] = useState({});
-  let currentDateTime = new Date();
+  let hours;
+  let minutes;
+  hours = date.getHours();
+  minutes = date.getMinutes();
 
   const API = axios.create({
     baseURL: "http://127.0.0.1:5000",
@@ -24,10 +26,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     setInterval(() => {
-      sethours(currentDateTime.getHours());
-      setminutes(currentDateTime.getMinutes())
-    }, 3000);
-  })
+      setdate(new Date());
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     setInterval(() => {
@@ -36,7 +37,13 @@ const Sidebar = () => {
   }, []);
   return (
     <div className="sidebar">
-      <div className="greeting">{hours < 16 ? (hours < 12 ? "Good Morning" : "Good Afternoon") : "Good Evening"}</div>
+      <div className="greeting">
+        {hours < 16
+          ? hours < 12
+            ? "Good Morning"
+            : "Good Afternoon"
+          : "Good Evening"}
+      </div>
       <div>
         {hours}
         <span className="blink">:</span>
@@ -56,8 +63,8 @@ const Sidebar = () => {
             tasks.data.map((task) => {
               let deadlineDT = new Date(task.deadline);
               let taskAv;
-              if (deadlineDT.getDate() == currentDateTime.getDate()) {
-                deadlineDT > currentDateTime
+              if (deadlineDT.getDate() == date.getDate()) {
+                deadlineDT > date
                   ? (taskAv = true)
                   : (taskAv = false);
                 return (
