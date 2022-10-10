@@ -49,7 +49,7 @@ const Sidebar = () => {
         <span className="blink">:</span>
         {minutes < 10 ? "0" + minutes : minutes}
       </div>
-      <div className="upcoming">Upcoming tasks</div>
+      <div className="upcoming">Today's task(s)</div>
       <table className="table">
         <thead>
           <tr className="tr">
