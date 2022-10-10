@@ -1,10 +1,10 @@
-from crypt import methods
 from datetime import datetime
 from package import create_app
-from package import db, Task
-from flask import request
-from sqlalchemy.sql import func
+from package import db, Task, User
+from flask import request, redirect
 from flask_cors import cross_origin
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = create_app()
 
@@ -50,6 +50,37 @@ def updateTask():
     db.session.commit()
     return "Task successfully updated in database"
 
+@app.route("/signup", methods=['POST', 'GET'])
+def signup():
+    data = request.get_json()
+    user = User.query.filter_by(username=data["username"]).first()
+    print(user)
+    if not user:
+        user = User(username=data["username"], password = generate_password_hash(data["password"], method="sha256"))
+        db.session.add(user)
+        db.session.commit()
+        return "User signed in"
+    else:
+        return "Username already exist"
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    data=request.get_json()
+    user = User.query.filter_by(username=data["username"]).first()
+    password = data["password"]
+    if user:
+        if check_password_hash(user.password, password):
+            return "You are now logged in"
+        else:
+            return "Incorrect password"
+    else:
+        return "Username does not exist"
+
+
+@app.route("/logout")
+def logout():
+    return "You've logged out successfully"
 
 if __name__ == "__main__":
     app.run(debug=True)

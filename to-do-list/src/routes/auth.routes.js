@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "../components/login/Login";
 
-const LoginRoute = [{ path: "/login", element: <Login /> }];
+const LoginRoute = [{ path: "/auth", element: <Login /> }];
 
 export default LoginRoute;

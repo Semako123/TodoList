@@ -1,7 +1,7 @@
 .outerBox {
   display: flex;
   width: 75vw;
-  height: 85vh;
+  height: 600px;
   background-color: #79726a;
   position: absolute;
   top: 50%;
@@ -12,32 +12,31 @@
 }
 
 .divSection {
-  height: 85vh;
+  height: 1200px;
   width: 37.5vw;
 }
 
 .imageSection {
-  height: 85vh;
+  height: 600px;
   width: 40vw;
-  transform: translateY(-42.8vh);
+  transform: translateY(-302px);
   transition: 500ms transform ease;
 }
 
 .loginSection {
-  height: 170vh;
+  height: 1200vh;
   background-color: #f6f4f1;
   position: relative;
   transition: 500ms transform ease;
-  transform: translateY(0vh);
+  transform: translateY(0px);
 }
 
 .background {
   height: 100vh;
   width: 100vw;
-  background-color: #e6e6e6;
 }
 
-.logo {
+.loginlogo {
   height: 100px;
   width: 100px;
   display: block;
@@ -52,7 +51,7 @@
   font-size: larger;
 }
 
-.form {
+.formField {
   display: flex;
   flex-direction: column;
   color: #403c38;
@@ -101,7 +100,7 @@
   transform: scale(1);
   transition: transform 200ms ease-in;
   color: #00607d;
-  margin-bottom: 21vh;
+  margin-bottom: 200px;
 }
 
 .bottomLink:hover {
@@ -119,4 +118,34 @@
   text-align: left;
   margin-bottom: 20px;
   color: #d32f2f;
+}
+
+@media screen and (max-width: 930px) {
+  .imageSection {
+    display: none;
+  }
+  .outerBox {
+    width: 60vw;
+  }
+  .loginSection {
+    width: 60vw;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .outerBox {
+    width: 80vw;
+  }
+  .loginSection {
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width: 1315px) {
+  .outerBox {
+    width: 60vw;
+  }
+  .imageSection {
+    width: 30vw;
+  }
 }

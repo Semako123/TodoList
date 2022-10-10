@@ -66,6 +66,20 @@
   margin: auto;
   font-weight: 400;
   font-size: 12px;
-  left:60%;
-  top:30%;
+  left: 60%;
+  top: 30%;
 }
+@media screen and (max-width: 1000px) {
+  .deadline {
+    font-size: 10px;
+    left: 45%;
+  }
+  .title {
+    font-size: 13px;
+  }
+  .action-button {
+    width: 37px;
+    height:30px;
+  }
+}
+

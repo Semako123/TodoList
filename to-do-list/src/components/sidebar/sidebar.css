@@ -48,3 +48,10 @@
   text-align: center;
   font-size: 11px;
 }
+
+@media screen and (max-width:1000px) {
+  .sidebar{
+    width: 80vw;
+    padding: 20px;
+  }
+}

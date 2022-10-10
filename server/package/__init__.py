@@ -2,11 +2,12 @@ from flask import Flask, request, redirect
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+from flask_login import LoginManager
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
-from .models import Task
+from .models import Task, User
 
 
 def create_app():
@@ -14,8 +15,13 @@ def create_app():
     app.config["SECRET_KEY"] = "ADSLJKLJSIJAjlkalp98493034idfjaa"
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    from .models import Task, User
+
     db.init_app(app)
     create_database(app)
+    def load_user(id):
+        return User.get(int(id))
+
     CORS(app)
     return app
 

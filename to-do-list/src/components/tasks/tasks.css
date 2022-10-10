@@ -22,7 +22,7 @@
   width: 30px;
   margin-right: 20px;
   align-self: center;
-  justify-content: center ;
+  justify-content: center;
   transition: transform 250ms ease;
 }
 
@@ -40,7 +40,7 @@
   font-size: 13px;
   border: solid #3b4b503c 1px;
   padding: 5px;
-  margin-bottom:2px;
+  margin-bottom: 2px;
   display: flex;
   flex-wrap: nowrap;
   transition: all 1000ms ease-in-out;
@@ -95,12 +95,48 @@ tr {
 }
 
 .task-bar {
-  position:absolute;
-  top:27%;
+  position: absolute;
+  top: 120px;
   width: 97%;
   transition: all 600ms ease-in-out;
 }
 
 .task-bar-move {
-  top: 46%;
+  top: 200px;
+}
+.greetingBar {
+  font-size: 23px;
+  text-align: center;
+  font-weight: 100;
+}
+
+@media screen and (max-width: 1000px) {
+  .tasks {
+    width: 80vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .greetingBar {
+    font-size: 20px;
+  }
+  .b-done {
+    font-size: 12px;
+  }
+  .form-visible {
+    display: block;
+  }
+
+  .task-bar {
+    top: 106px;
+  }
+  .task-bar-move {
+    top: 210px;
+  }
+  .doneBtn {
+    display: flex;
+    justify-content: center;
+  }
+  .tasks {
+    padding: 4px;
+  }
 }

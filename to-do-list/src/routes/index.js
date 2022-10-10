@@ -1,9 +1,9 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import LoginRoute from "./login.routes";
-import Signup from "./sinup.routes";
+import LoginRoute from "./auth.routes";
+import HomeRoute from "./home.routes";
 
-const router = createBrowserRouter([...LoginRoute, ...Signup]);
+const router = createBrowserRouter([...LoginRoute, ...HomeRoute]);
 
 const ReactRouterProvider = () => {
   return <RouterProvider router={router} />;

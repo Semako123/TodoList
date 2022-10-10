@@ -14,8 +14,13 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const API = axios.create({
+    baseURL: "http://127.0.0.1:5000",
+  });
   const [userName, setuserName] = useState("");
   const [password, setpassword] = useState("");
   const [conPassword, setconPassword] = useState("");
@@ -104,16 +109,16 @@ const Login = () => {
   const handleSwitchSignup = () => {
     const formPage = document.querySelector(".loginSection");
     const imageSec = document.querySelector(".imageSection");
-    formPage.style.transform = "translateY(-85vh)";
-    imageSec.style.transform = "translateY(42.8vh)";
+    formPage.style.transform = "translateY(-600px)";
+    imageSec.style.transform = "translateY(302px)";
     setDefault();
   };
 
   const handleSwitchLogin = () => {
     const formPage = document.querySelector(".loginSection");
     const imageSec = document.querySelector(".imageSection");
-    formPage.style.transform = "translateY(0vh)";
-    imageSec.style.transform = "translateY(-42.8vh)";
+    formPage.style.transform = "translateY(0px)";
+    imageSec.style.transform = "translateY(-302px)";
     setDefault();
   };
 
@@ -129,7 +134,29 @@ const Login = () => {
     setconPassword(e.target.value);
   };
 
-  const LoginRq = () => {};
+  const handleSignupRq = () => {
+    handleConPasswordValid();
+    handlePasswordValid();
+    handleNameValid();
+    if (
+      !(errMessage.conPassword || errMessage.passWord || errMessage.userName)
+    ) {
+      API.post("/signup", {
+        username: userName,
+        password: password,
+        conPassword: conPassword,
+      }).then((res) => {
+        console.log(res);
+      });
+    }
+  };
+  const handleLoginRq = () => {
+    API.post("/login", { username: userName, password: password }).then(
+      (res) => {
+        console.log(res);
+      }
+    );
+  };
 
   return (
     <>
@@ -145,17 +172,15 @@ const Login = () => {
           </div>
           <div className="divSection loginSection">
             <div>
-              <img src={logo} alt="Logo of oases" className="logo" />
+              <img src={logo} alt="Logo of oases" className="loginlogo" />
               <h5 className="intro">Welcome to Oases Todo</h5>
-              <div className="form">
+              <div className="formField">
                 <TextField
                   className="textField"
                   label="Username or email"
                   variant="standard"
                   value={userName}
                   onChange={handleNameChange}
-                  helperText=""
-                  // error
                 />
                 <FormControl variant="standard">
                   <InputLabel
@@ -188,7 +213,9 @@ const Login = () => {
                     }
                   />
                 </FormControl>
-                <button className="loginBtn">Login</button>
+                <button className="loginBtn" onClick={handleLoginRq}>
+                  Login
+                </button>
               </div>
               <div className="bottom">
                 <h6 className="bottomText">Don't have an account yet?</h6>
@@ -201,9 +228,9 @@ const Login = () => {
               </div>
             </div>
             <div>
-              <img src={logo} alt="Logo of oases" className="logo" />
+              <img src={logo} alt="Logo of oases" className="loginlogo" />
               <h5 className="intro">Welcome to Oases Todo</h5>
-              <div className="form">
+              <div className="formField">
                 <TextField
                   error={errorState.userName}
                   className="textField"
@@ -279,7 +306,9 @@ const Login = () => {
                   />
                   <div className="errorMessage">{errMessage.conPassword}</div>
                 </FormControl>
-                <button className="loginBtn">Signup</button>
+                <button onClick={handleSignupRq} className="loginBtn">
+                  Signup
+                </button>
               </div>
               <div className="bottom">
                 <h6 className="bottomText">Already created an account?</h6>

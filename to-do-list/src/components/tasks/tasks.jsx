@@ -97,7 +97,7 @@ const Notes = () => {
   return (
     <>
       <div className="tasks">
-        <div className="greeting">What plans do you have today?</div>
+        <h1 className="greetingBar">What plans do you have today?</h1>
         <div className="header">
           <h3>Tasks</h3>
           <Tooltip title="Add Task">
@@ -118,7 +118,7 @@ const Notes = () => {
               <tr>
                 <td>
                   <input
-                    autoComplete='off'
+                    autoComplete="off"
                     type="text"
                     name="task-title"
                     className="task-form-title"
@@ -138,20 +138,22 @@ const Notes = () => {
               </tr>
             </tbody>
           </table>
-          <button type="submit" className="b-done add" onClick={handleSubmit}>
-            Add
-          </button>
-          <button
-            type="submit"
-            className="b-done done"
-            style={{ display: "none" }}
-            onClick={handleUpdate}
-          >
-            Done
-          </button>
-          <button className="b-done" onClick={handleCancelTaskInput}>
-            Cancel
-          </button>
+          <div className="doneBtn">
+            <button type="submit" className="b-done add" onClick={handleSubmit}>
+              Add
+            </button>
+            <button
+              type="submit"
+              className="b-done done"
+              style={{ display: "none" }}
+              onClick={handleUpdate}
+            >
+              Done
+            </button>
+            <button className="b-done" onClick={handleCancelTaskInput}>
+              Cancel
+            </button>
+          </div>
         </div>
         <div className="task-bar">
           {tasks.data ? (
