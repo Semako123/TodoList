@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d806f130.css",
+    "main.js": "/static/js/main.96ce0bf1.js",
+    "static/media/Completed.gif": "/static/media/Completed.fa1c35a99f40aa579d5c.gif",
+    "static/media/Checklist.gif": "/static/media/Checklist.dd5ac74bbf53de3f48fa.gif",
+    "static/media/Livvic-ExtraLight.ttf": "/static/media/Livvic-ExtraLight.ddf37db641f81018acfb.ttf",
+    "static/media/Livvic-ExtraLight.woff": "/static/media/Livvic-ExtraLight.0386e6c52dea8c44abbe.woff",
+    "static/media/Livvic-ExtraLight.woff2": "/static/media/Livvic-ExtraLight.fd2c54634ea7f4ed992f.woff2",
+    "static/media/oases.png": "/static/media/oases.8fe829a3bd0637734509.png",
+    "index.html": "/index.html",
+    "main.d806f130.css.map": "/static/css/main.d806f130.css.map",
+    "main.96ce0bf1.js.map": "/static/js/main.96ce0bf1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d806f130.css",
+    "static/js/main.96ce0bf1.js"
+  ]
+}

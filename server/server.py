@@ -1,16 +1,18 @@
+from audioop import cross
 from datetime import datetime
 from package import create_app
 from package import db, Task, User
 from flask import request, redirect
 from flask_cors import cross_origin
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask.helpers import send_from_directory
 
 
 app = create_app()
 
 
 @app.route("/addnote", methods=["POST", "GET"])
-@cross_origin(origin="*", headers=["Content-Type", "Authorization"])
+@cross_origin()
 def add_note():
     if request.method == "POST":
         new_entry = request.get_json()
@@ -23,6 +25,7 @@ def add_note():
 
 
 @app.route("/fetch-tasks")
+@cross_origin()
 def fetchTasks():
     tasks = Task.query.order_by(Task.deadline).all()
     tasks_obj = {"data": []}
@@ -33,6 +36,7 @@ def fetchTasks():
 
 
 @app.route("/delete", methods=["POST", "GET"])
+@cross_origin()
 def deleteTask():
     data = request.get_json()
     Task.query.filter_by(id=data["id"]).delete()
@@ -41,6 +45,7 @@ def deleteTask():
 
 
 @app.route("/update", methods=["POST", "GET"])
+@cross_origin()
 def updateTask():
     data = request.get_json()
     deadline = datetime.strptime(data["deadline"], "%Y-%m-%dT%H:%M")
@@ -50,13 +55,18 @@ def updateTask():
     db.session.commit()
     return "Task successfully updated in database"
 
-@app.route("/signup", methods=['POST', 'GET'])
+
+@app.route("/signup", methods=["POST", "GET"])
+@cross_origin()
 def signup():
     data = request.get_json()
     user = User.query.filter_by(username=data["username"]).first()
     print(user)
     if not user:
-        user = User(username=data["username"], password = generate_password_hash(data["password"], method="sha256"))
+        user = User(
+            username=data["username"],
+            password=generate_password_hash(data["password"], method="sha256"),
+        )
         db.session.add(user)
         db.session.commit()
         return "User signed in"
@@ -65,8 +75,9 @@ def signup():
 
 
 @app.route("/login", methods=["POST", "GET"])
+@cross_origin()
 def login():
-    data=request.get_json()
+    data = request.get_json()
     user = User.query.filter_by(username=data["username"]).first()
     password = data["password"]
     if user:
@@ -77,10 +88,10 @@ def login():
     else:
         return "Username does not exist"
 
-
-@app.route("/logout")
-def logout():
-    return "You've logged out successfully"
+@app.route("/")
+@cross_origin()
+def serve():
+    return send_from_directory(app.static_folder, "index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
